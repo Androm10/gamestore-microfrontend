@@ -1,10 +1,10 @@
-import { createBrowserRouter } from "react-router-dom";
-import { App } from "..";
-import { GameCatalogPage, GameDetailsPage } from "@/pages/game";
+import { createBrowserRouter } from 'react-router-dom';
+import { App } from '..';
+import { GameCatalogPage, GameDetailsPage } from '@/pages/game';
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     children: [
       {
@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
         element: <GameCatalogPage />,
       },
       {
-        path: "/game/:id",
+        path: '/game/:id',
         element: <GameDetailsPage />,
       },
     ],

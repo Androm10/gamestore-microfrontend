@@ -1,24 +1,25 @@
-import { Game } from "@/entities/game/model/types";
-import { GameList } from "@/entities/game/ui/GameList";
-import { Link } from "react-router-dom";
+import { Game } from '@/entities/game/model/types';
+import { GameList } from '@/entities/game/ui/GameList';
+import { AddToBasketButton } from '@/features/game/addToBasket/ui/AddToBasketButton';
+import { AddToWishlistButton } from '@/features/game/addToWishlist/ui/AddToWishlistButton';
 
 export function GameCatalogPage() {
   const mockGames: Game[] = [
     {
       id: 1,
-      name: "Shit",
-      description: "crap game",
+      name: 'Shit',
+      description: 'crap game',
       releaseDate: new Date(),
       price: 29.99,
-      avatarUrl: "mocks/mockgame1.jpg",
+      avatarUrl: 'mocks/mockgame1.jpg',
     },
     {
       id: 2,
-      name: "Wallout",
-      description: "Postapocalypse western shooter",
+      name: 'Wallout',
+      description: 'Postapocalypse western shooter',
       releaseDate: new Date(),
       price: 15.99,
-      avatarUrl: "mocks/mockgame2.jpg",
+      avatarUrl: 'mocks/mockgame2.jpg',
     },
   ];
 
@@ -27,14 +28,12 @@ export function GameCatalogPage() {
       Game catalog
       <GameList
         games={mockGames}
-        gameCardBottomSlot={(game: Game) => {
-          return (
-            <div>
-              {" "}
-              <Link to={"/game/" + game.id}>Details</Link>{" "}
-            </div>
-          );
-        }}
+        gameCardBottomSlot={(game: Game) => (
+          <>
+            <AddToBasketButton game={game} />
+            <AddToWishlistButton game={game} />
+          </>
+        )}
       />
     </div>
   );

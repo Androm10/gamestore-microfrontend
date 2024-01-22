@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
-import { Game } from "../../model/types";
-import { GameCard } from "../GameCard";
-import s from "./GameList.module.scss";
+import { ReactNode } from 'react';
+import { Game } from '../../model/types';
+import { GameCard } from '../GameCard';
+import s from './GameList.module.scss';
 
 interface GameListProps {
   games: Game[];
@@ -10,16 +10,13 @@ interface GameListProps {
 
 export function GameList(props: GameListProps) {
   const { games, gameCardBottomSlot } = props;
-
   return (
     <div className={s.gameList}>
-      {games.map((game, index) => (
+      {games.map((game) => (
         <GameCard
           key={game.id}
           game={game}
-          bottomActionSlot={
-            gameCardBottomSlot ? gameCardBottomSlot(game) : undefined
-          }
+          bottomActionSlot={gameCardBottomSlot ? gameCardBottomSlot(game) : undefined}
         />
       ))}
     </div>

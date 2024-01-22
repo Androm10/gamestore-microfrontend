@@ -1,6 +1,7 @@
-import { ReactNode } from "react";
-import { Game } from "../../model/types";
-import s from "./GameCard.module.scss";
+import { ReactNode } from 'react';
+import { Game } from '../../model/types';
+import s from './GameCard.module.scss';
+import { GameDiscount } from '../GameDiscount';
 
 interface GameCardProps {
   game: Game;
@@ -9,6 +10,8 @@ interface GameCardProps {
 
 export function GameCard(props: GameCardProps) {
   const { game, bottomActionSlot } = props;
+
+  const isDiscounted = false;
 
   return (
     <div className={s.container}>
@@ -19,9 +22,14 @@ export function GameCard(props: GameCardProps) {
         <div className={s.name}>
           <label>{game.name}</label>
         </div>
-        <label>${game.price}</label>
+        <label className={s.price}>${game.price}</label>
         <div className={s.dropupMenu}>{bottomActionSlot}</div>
       </div>
+      {isDiscounted && (
+        <div className={s.discount}>
+          <GameDiscount game={game} />
+        </div>
+      )}
     </div>
   );
 }

@@ -9,8 +9,5 @@
     "apps/*"
   ],
   "keywords": [],
-  "author": "",
-  "dependencies": {
-    "sass": "^1.69.5"
-  }
+  "author": ""
 }

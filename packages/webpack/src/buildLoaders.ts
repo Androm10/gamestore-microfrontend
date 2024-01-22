@@ -1,29 +1,29 @@
-import { ModuleOptions } from "webpack";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import ReactRefreshTypeScript from "react-refresh-typescript";
-import { BuildOptions } from "./types/types";
-import { buildBabelLoader } from "./babel/buildBabelLoader";
-import postcssPresetEnv from "postcss-preset-env";
+import { ModuleOptions } from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import ReactRefreshTypeScript from 'react-refresh-typescript';
+import { BuildOptions } from './types/types';
+// import { buildBabelLoader } from "./babel/buildBabelLoader";
+import postcssPresetEnv from 'postcss-preset-env';
 
-export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
-  const isDev = options.mode === "development";
+export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
+  const isDev = options.mode === 'development';
 
   const assetLoader = {
     test: /\.(png|jpg|jpeg|gif)$/i,
-    type: "asset/resource",
+    type: 'asset/resource',
   };
 
   const svgrLoader = {
     test: /\.svg$/i,
     use: [
       {
-        loader: "@svgr/webpack",
+        loader: '@svgr/webpack',
         options: {
           icon: true,
           svgoConfig: {
             plugins: [
               {
-                name: "convertColors",
+                name: 'convertColors',
                 params: {
                   currentColor: true,
                 },
@@ -36,10 +36,10 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
   };
 
   const cssLoaderWithModules = {
-    loader: "css-loader",
+    loader: 'css-loader',
     options: {
       modules: {
-        localIdentName: isDev ? "[path][name]__[local]" : "[hash:base64:8]",
+        localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]',
       },
     },
   };
@@ -47,17 +47,17 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
   const scssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
-      isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+      isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       cssLoaderWithModules,
       {
-        loader: "postcss-loader",
+        loader: 'postcss-loader',
         options: {
           postcssOptions: {
-            plugins: [postcssPresetEnv({ browsers: "last 2 versions" })],
+            plugins: [postcssPresetEnv({ browsers: 'last 2 versions' })],
           },
         },
       },
-      "sass-loader",
+      'sass-loader',
     ],
   };
 
@@ -66,7 +66,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
     test: /\.tsx?$/,
     use: [
       {
-        loader: "ts-loader",
+        loader: 'ts-loader',
         options: {
           transpileOnly: true,
           getCustomTransformers: () => ({

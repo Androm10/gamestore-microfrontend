@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
+import s from './LayoutHeader.module.scss';
 
 interface LayoutHeaderProps {
   rightSlot?: ReactNode;
@@ -9,9 +10,7 @@ export function LayoutHeader(props: LayoutHeaderProps) {
 
   return (
     <header>
-      <div>
-        <img src="jopa.gif" />
-      </div>
+      <div className={s.logo}>GAMESHOP</div>
       <div>{rightSlot}</div>
     </header>
   );
